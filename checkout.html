@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お支払い | Coloring Art</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .checkout-section {
+            padding-top: 120px;
+            min-height: 80vh;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .checkout-form {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+        }
+
+        .order-summary {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-row {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--text-accent);
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <nav>
+            <div class="logo" onclick="location.href='index.html'">🎨 Coloring Art</div>
+        </nav>
+    </header>
+
+    <section class="checkout-section">
+        <h2 class="section-title">お支払い情報の入力</h2>
+
+        <div class="checkout-form">
+            <div class="order-summary" id="order-summary">
+                <!-- 注文概要 -->
+            </div>
+
+            <form id="payment-form" onsubmit="handlePayment(event)">
+                <div class="form-group">
+                    <label>お名前</label>
+                    <input type="text" class="form-control" required placeholder="山田 太郎">
+                </div>
+                <div class="form-group">
+                    <label>メールアドレス</label>
+                    <input type="email" class="form-control" required placeholder="example@email.com">
+                </div>
+
+                <div class="form-group" style="margin-top: 2rem;">
+                    <label>クレジットカード番号 (デモ用なので入力不要です)</label>
+                    <input type="text" class="form-control" placeholder="**** **** **** ****" disabled
+                        style="opacity: 0.5;">
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button type="submit" class="btn-primary" style="width: 100%;">支払いを確定する</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // 注文概要の表示
+        window.addEventListener('DOMContentLoaded', () => {
+            const summaryDiv = document.getElementById('order-summary');
+            if (cart.items.length === 0) {
+                location.href = 'cart.html';
+                return;
+            }
+
+            let html = '<h3>注文内容</h3>';
+            cart.items.forEach(item => {
+                html += `
+                    <div class="summary-row">
+                        <span>${item.title}</span>
+                        <span>¥${item.price}</span>
+                    </div>
+                `;
+            });
+            html += `
+                <div class="summary-row total-row">
+                    <span>合計</span>
+                    <span>¥${cart.getTotal()}</span>
+                </div>
+            `;
+            summaryDiv.innerHTML = html;
+        });
+
+        function handlePayment(e) {
+            e.preventDefault();
+            // 決済処理のシミュレーション
+            const btn = e.target.querySelector('button');
+            btn.textContent = '処理中...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                // カートを空にする
+                localStorage.removeItem('coloringCart');
+                // 完了ページへ
+                location.href = 'success.html';
+            }, 1500);
+        }
+    </script>
+</body>
+
+</html>

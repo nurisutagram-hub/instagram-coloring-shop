@@ -816,4 +816,75 @@ footer {
   100% {
     transform: translateY(0px);
   }
+}/* ===== カート機能のスタイル ===== */
+.btn-add-cart {
+    display: block;
+    width: 100%;
+    margin-top: 0.8rem;
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid var(--primary-orange);
+    color: var(--primary-orange);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    font-weight: 600;
+}
+
+.btn-add-cart:hover {
+    background: var(--primary-orange);
+    color: white;
+}
+
+.cart-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary-gradient);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    box-shadow: var(--shadow-lg);
+    z-index: 3000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.cart-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.cart-icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    transition: var(--transition-fast);
+}
+
+.cart-icon-container:hover {
+    color: var(--text-accent);
+    transform: scale(1.1);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--primary-pink);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg-dark);
 }

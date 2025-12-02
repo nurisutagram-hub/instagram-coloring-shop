@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購入完了 | Coloring Art</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .success-section {
+            padding-top: 120px;
+            min-height: 80vh;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .download-list {
+            margin-top: 2rem;
+            background: var(--glass-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .download-btn {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <nav>
+            <div class="logo" onclick="location.href='index.html'">🎨 Coloring Art</div>
+        </nav>
+    </header>
+
+    <section class="success-section">
+        <div class="success-icon">🎉</div>
+        <h2 class="section-title">ご購入ありがとうございます！</h2>
+        <p class="section-subtitle">
+            お支払いが完了しました。<br>
+            以下のリンクから塗り絵をダウンロードしてください。
+        </p>
+
+        <div class="download-list">
+            <h3>ダウンロード</h3>
+            <div class="download-item">
+                <span>購入した塗り絵セット.zip</span>
+                <a href="#" class="download-btn" onclick="alert('デモサイトのため実際のファイルはありません')">ダウンロード</a>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem;">
+            <a href="index.html" class="btn-secondary">トップページに戻る</a>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
